@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: helloworld--replication-controller
+spec:
+  replicas: 4
+  selector:
+    app: helloworld
+ #daqui para baixo(template) é a definição do POD   
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: k8s-demo
+        image: gnoguchi/node-hello-world-k8s-test
+        ports:
+        - containerPort: 3000
